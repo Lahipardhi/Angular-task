@@ -1,0 +1,81 @@
+<div class="container">
+    <div class="row">
+        <div class="col-6" *ngIf="data.length">
+
+            <mat-card class="example-card" *ngFor="let item of data">
+
+                <mat-card-header>
+                    <div mat-card-avatar class="example-header-image"></div>
+
+                </mat-card-header>
+                <img mat-card-image [src]="item.
+                ingImg
+                 " alt="" class="w-100">
+                <mat-card-content>
+                    <h3>{{item.ingName }}
+                    </h3>
+                </mat-card-content>
+                <p><span class="font-weight-light ">Price:</span>{{item.ingPrice | currency:'INR' }}
+                </p>
+                <span>Quantity:
+                    <button (click)="increaseQuantity(item)">+</button>
+                    <span>{{ item.quantity}}</span>
+                <button (click)="decreaseQuantity(item)">-</button>
+
+
+                </span>
+
+
+                <!-- <div>Total:{{calculateTotal()}}</div> -->
+
+
+                <button class="btn btn-sm btn-secondary" (click)="AddtoBag(item)">addData</button>
+
+            </mat-card>
+
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="col-sm-12">
+        <div class="row">
+            <table *ngIf="product.length>0 ">
+                <thead>
+                    <tr>
+                        <th>Product Name</th>
+                        <th>Quantity</th>
+                        <th>Price Detils</th>
+                        <th>Order Total </th>
+                        <th>Action</th>
+
+                    </tr>
+
+                </thead>
+                <ng-container>
+                    <tbody *ngFor="let item of  product" #elseNoUser>
+
+                        <tr>
+
+                            <td>{{item.ingName}}
+                            </td>
+                            <td>{{item.quantity}}</td>
+                            <td>{{item.ingPrice}}</td>
+                            <td>{{item.quantity * item.ingPrice}}</td>
+                            <td><button (click)="delete(item)" class="btn btn-danger">Delete</button></td>
+                        </tr>
+
+
+                </ng-container>
+
+                <ng-template #elseNoUser>
+                    <tr>
+                        <td colspan="6">There are no Product registered yet</td>
+                    </tr>
+                </ng-template>
+
+
+
+            </table>
+        </div>
+    </div>
+</div>

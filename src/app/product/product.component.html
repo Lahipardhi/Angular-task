@@ -1,0 +1,28 @@
+<mat-dialog-content>
+    <form [formGroup]="myRecipeForm" (submit)="Dialog()">
+        <div class="row">
+            <div class="col-12 mb-2">
+                <input type="text" class="form-control" placeholder="Product Image" formControlName="ingImg">
+                <span class="small text-danger" *ngIf="myRecipeForm.get('ingImg').touched && !myRecipeForm.get('ingImg').valid">
+                    <ng-container *ngIf="myRecipeForm.get('ingImg').errors?.required">Product Image is required</ng-container>
+                    <ng-container *ngIf="myRecipeForm.get('ingImg').errors?.validateImageSize">Image size should be less than 100kb</ng-container> </span>
+
+
+            </div>
+            <div class="col-12 mb-2">
+                <input type="text" class="form-control" placeholder="Product Name" formControlName="ingName">
+                <span class="small text-danger" *ngIf="myRecipeForm.get('ingName').touched && !myRecipeForm.get('ingName').valid">Product Name is required</span>
+            </div>
+            <div class="col-12 mb-2">
+                <input type="text" class="form-control" placeholder="Product Price" formControlName="ingPrice">
+                <span class="small text-danger" *ngIf="myRecipeForm.get('ingPrice').touched && !myRecipeForm.get('ingPrice').valid">Product Price is required</span>
+            </div>
+
+            <div class="col-12 mb-2 ">
+                <button type="submit" class="btn btn-primary btn-sm btn-block">Add Product</button>
+
+            </div>
+
+        </div>
+    </form>
+</mat-dialog-content>
